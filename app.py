@@ -44,14 +44,17 @@ st.markdown("""
 # ──────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    kpi = pd.read_csv("01_축제_관광소비_KPI.csv", encoding='utf-8-sig')
-    monthly = pd.read_csv("02_팔달구_월별_관광총소비.csv", encoding='utf-8-sig')
-    yearly = pd.read_csv("03_팔달구_연간_관광소비_요약.csv", encoding='utf-8-sig')
-    oct_cat = pd.read_csv("04_10월_업종별_관광소비.csv", encoding='utf-8-sig')
-    compare = pd.read_csv("05_KPI_실제금액_대조.csv", encoding='utf-8-sig')
+    from pathlib import Path
+    BASE = Path(__file__).parent
     
-    kpi_full = pd.read_csv("수원화성문화제_문화관광축제_주요_지표.csv", encoding='utf-8-sig')
-    local_full = pd.read_csv("수원시팔달구_관광소비_전체_202001-202512.csv", encoding='utf-8-sig')
+    kpi = pd.read_csv(BASE / "01_축제_관광소비_KPI.csv", encoding='utf-8-sig')
+    monthly = pd.read_csv(BASE / "02_팔달구_월별_관광총소비.csv", encoding='utf-8-sig')
+    yearly = pd.read_csv(BASE / "03_팔달구_연간_관광소비_요약.csv", encoding='utf-8-sig')
+    oct_cat = pd.read_csv(BASE / "04_10월_업종별_관광소비.csv", encoding='utf-8-sig')
+    compare = pd.read_csv(BASE / "05_KPI_실제금액_대조.csv", encoding='utf-8-sig')
+    
+    kpi_full = pd.read_csv(BASE / "수원화성문화제_문화관광축제_주요_지표.csv", encoding='utf-8-sig')
+    local_full = pd.read_csv(BASE / "수원시팔달구_관광소비_전체_202001-202512.csv", encoding='utf-8-sig')
     
     return kpi, monthly, yearly, oct_cat, compare, kpi_full, local_full
 
